@@ -19,7 +19,7 @@ body {
   z-index: 100;
 }
 
-.title{
+.title {
 
   font-size: 50px;
   float: left;
@@ -63,17 +63,25 @@ body {
   margin-top: -150px;
 }
 
-#cloud{
+#cloud {
   z-index: 1;
   transition: transform 1ms;
   position: absolute;
   left: 300px;
   top: -20px;
 }
-#cloud2{
+
+#cloud2 {
   z-index: 1;
   transition: transform 1ms;
   position: absolute;
   left: 310px;
   top: -17px;
+}
+
+.logo {
+  float: right;
+  left: 85%;
+  position: absolute;
+  top: 7%;
 }
