@@ -37,7 +37,6 @@ body {
 }
 
 .child {
-  color: white;
   display: inline-block;
   vertical-align: middle;
   float: left;
@@ -49,7 +48,7 @@ body {
   display: inline-block;
   vertical-align: middle;
   float: right;
-  padding-top: 1%;
+  padding-top: 5px;
   padding-right: 7%;
   z-index: 1;
 }
