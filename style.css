@@ -1,0 +1,30 @@
+:root{
+    --bg-color: rgb(44, 227, 255);
+
+}
+
+body{
+    background-color: var(--bg-color);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.main{
+display: grid;
+justify-content: center;
+max-width: 100%;
+}
+
+.prayer {
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    background-color: rgba(221, 221, 221, 0.741);
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: larger;
+  }
+  .child {
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+  }
