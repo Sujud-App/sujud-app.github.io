@@ -21,10 +21,11 @@ body {
 
 .title{
 
-  font-size: xx-large;
+  font-size: xxx-large;
+  float: left;
   font-weight: bolder;
   display: flex;
-  justify-content: center;
+  margin-bottom: -1px;
 }
 
 .prayer {
