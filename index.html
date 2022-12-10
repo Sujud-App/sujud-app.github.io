@@ -5,9 +5,11 @@
     <script src="adhan.umd.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E"></script>
+    <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
 </head>
 
-<body onload="prayerName(prayer)">
+<body onload="getCoordintes()">
 
     <section class="main">
         <p class="title">Salah Times London</p>
@@ -40,7 +42,6 @@
             <p class="child2" id="isha"></p>
         </div>
     </section>
-    
     <pre><script type="text/javascript">
 
 
@@ -62,8 +63,25 @@
             }
         }
 
+
+    </script></pre>
+    <script>
+function getCoordintes() {
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+  
+    function success(pos) {
+        var crd = pos.coords;
+        var lat = crd.latitude.toString();
+        var lng = crd.longitude.toString();
+        var coordinates = [lat, lng];
+        console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+        getCity(coordinates);
         var date = new Date();
-        var coordinates = new adhan.Coordinates(51, 0.3);
+        var coordinates = new adhan.Coordinates(lat, lng);
         var params = adhan.CalculationMethod.NorthAmerica();
         params.madhab = adhan.Madhab.Hanafi;
         var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
@@ -84,8 +102,41 @@
         document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
         document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
         document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer())
-
-    </script></pre>
+        return;
+  
+    }
+  
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+  
+    navigator.geolocation.getCurrentPosition(success, error, options);
+}
+  
+// Step 2: Get city name
+function getCity(coordinates) {
+    var xhr = new XMLHttpRequest();
+    var lat = coordinates[0];
+    var lng = coordinates[1];
+  
+    // Paste your LocationIQ token below.
+    xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E&lat=" + lat + "&lon=" + lng + "&format=json", true);
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+    xhr.addEventListener("readystatechange", processRequest, false);
+  
+    function processRequest(e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var response = JSON.parse(xhr.responseText);
+            var city = response.address.city;
+            console.log(city);
+            return;
+        }
+    }
+}
+  
+getCoordintes();
+    </script>
 </body>
 
 </html>
