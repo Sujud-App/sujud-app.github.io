@@ -19,7 +19,8 @@ body {
 }
 
 .title{
-  font-size: 400%;
+  font-size: xx-large;
+  font-weight: bolder;
   display: flex;
   justify-content: center;
 }
