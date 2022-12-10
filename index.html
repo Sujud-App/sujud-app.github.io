@@ -1,5 +1,3 @@
-
-
 <html>
 
 
@@ -9,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body onload="getLocation()">
 
     <section class="main">
         <p class="title">Salah Times London</p>
@@ -69,7 +67,7 @@
         }
 
         var date = new Date();
-        var coordinates = new adhan.Coordinates(51.5806, 0.3420);
+        var coordinates = new adhan.Coordinates(position.coords.latitude, position.coords.longitude);
         var params = adhan.CalculationMethod.NorthAmerica();
         params.madhab = adhan.Madhab.Hanafi;
         var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
@@ -89,6 +87,21 @@
         document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
         document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
         document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
+
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
     </script></pre>
 </body>
 
