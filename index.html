@@ -118,6 +118,10 @@ function getCoordintes() {
         var coordinates = new adhan.Coordinates(lat, lng);
         var params = adhan.CalculationMethod.NorthAmerica();
         params.madhab = adhan.Madhab.Hanafi;
+        params.adjustments.sunrise = -1
+        params.adjustments.dhuhr = 4
+        params.adjustments.asr = 1
+        params.adjustments.isha = -18
         var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
 
         // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
