@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="getLocation()">
+<body onload="prayerName(prayer)">
 
     <section class="main">
         <p class="title">Salah Times London</p>
+        <div class="prayer">
+            <h3 class="child">Current prayer:</h3>
+            <p class="child2" id="current"></p>
+        </div>
         <div class="prayer">
             <h3 class="child">Fajr:</h3>
             <p class="child2" id="fajr"></p>
@@ -36,15 +40,7 @@
             <p class="child2" id="isha"></p>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
+    
     <pre><script type="text/javascript">
 
 
@@ -67,7 +63,7 @@
         }
 
         var date = new Date();
-        var coordinates = new adhan.Coordinates(position.coords.latitude, position.coords.longitude);
+        var coordinates = new adhan.Coordinates(51, 0.3);
         var params = adhan.CalculationMethod.NorthAmerica();
         params.madhab = adhan.Madhab.Hanafi;
         var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
@@ -87,21 +83,8 @@
         document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
         document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
         document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
+        document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer())
 
-        var x = document.getElementById("demo");
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
     </script></pre>
 </body>
 

@@ -37,6 +37,7 @@ body {
 }
 
 .child {
+  color: white;
   display: inline-block;
   vertical-align: middle;
   float: left;
