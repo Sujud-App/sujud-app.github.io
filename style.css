@@ -21,7 +21,7 @@ body {
 
 .title{
 
-  font-size: xxx-large;
+  font-size: 50px;
   float: left;
   font-weight: bolder;
   display: flex;
@@ -55,10 +55,25 @@ body {
   padding-right: 7%;
 }
 
-svg {
+.sun {
   z-index: 1;
   transition: transform 1ms;
   position: absolute;
   margin-left: -200px;
   margin-top: -150px;
+}
+
+#cloud{
+  z-index: 1;
+  transition: transform 1ms;
+  position: absolute;
+  left: 300px;
+  top: -20px;
+}
+#cloud2{
+  z-index: 1;
+  transition: transform 1ms;
+  position: absolute;
+  left: 310px;
+  top: -17px;
 }
