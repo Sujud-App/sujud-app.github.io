@@ -45,16 +45,12 @@ body {
 }
 
 .child {
-
-  display: inline-block;
   vertical-align: middle;
   float: left;
   padding-left: 7%;
 }
 
 .child2 {
-
-  display: inline-block;
   vertical-align: middle;
   float: right;
   padding-top: 5px;

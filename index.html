@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
+
 <head>
     <script src="adhan.umd.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E"></script>
     <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <meta name="description" content="Salah timings based on your location.">
@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" sizes="512x512" href="logo.png">
 </head>
 
-<body class="bg" onload="getLocation()" >
+<body class="bg" onload="getLocation()">
     <svg class="sun" width="560" height="560" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg"
         class="nofill" aria-hidden="true">
         <circle opacity="0.2" cx="280" cy="280" r="280" fill="white"></circle>
@@ -89,72 +89,94 @@
     <script>
 
         function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, handleError);
-  } else {
-    console.error("Geolocation is not supported by this browser.");
-  }
-}
+            if (navigator.geolocation) {
+                alert("If you decline location permissions, the default times will show for London.");
+                navigator.geolocation.getCurrentPosition(showPosition, handleError);
+                var date = new Date();
+            var coordinates = new adhan.Coordinates( 51, 0.3);
+            var params = adhan.CalculationMethod.NorthAmerica();
+            params.madhab = adhan.Madhab.Hanafi;
+            params.adjustments.sunrise = -1
+            params.adjustments.dhuhr = 4
+            params.adjustments.asr = 1
+            params.adjustments.isha = -18
+            var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
 
-// watch visitor's location
-function watchLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition, handleError);
-  } else {
-    console.error("Geolocation is not supported by this browser.");
-  }
-}
+            // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
+            // document.write('Fajr: ' + prayerTimes.fajr + '\n');
+            // document.write('Sunrise: ' + prayerTimes.sunrise + '\n');
+            // document.write('Dhuhr: ' + prayerTimes.dhuhr + '\n');
+            // document.write('Asr: ' + prayerTimes.asr + '\n');
+            // document.write('Maghrib: ' + prayerTimes.maghrib + '\n');
+            // document.write('Isha: ' + prayerTimes.isha + '\n');
 
-function handleError(error) {
-  let errorStr;
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      errorStr = 'User denied the request for Geolocation.';
-      break;
-    case error.POSITION_UNAVAILABLE:
-      errorStr = 'Location information is unavailable.';
-      break;
-    case error.TIMEOUT:
-      errorStr = 'The request to get user location timed out.';
-      break;
-    case error.UNKNOWN_ERROR:
-      errorStr = 'An unknown error occurred.';
-      break;
-    default:
-      errorStr = 'An unknown error occurred.';
-  }
-  console.error('Error occurred: ' + errorStr);
-}
-
-function showPosition(position) {
-  var date = new Date();
-                var coordinates = new adhan.Coordinates(position.coords.latitude, position.coords.longitude);
-                var params = adhan.CalculationMethod.NorthAmerica();
-                params.madhab = adhan.Madhab.Hanafi;
-                params.adjustments.sunrise = -1
-                params.adjustments.dhuhr = 4
-                params.adjustments.asr = 1
-                params.adjustments.isha = -18
-                var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
-
-                // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
-                // document.write('Fajr: ' + prayerTimes.fajr + '\n');
-                // document.write('Sunrise: ' + prayerTimes.sunrise + '\n');
-                // document.write('Dhuhr: ' + prayerTimes.dhuhr + '\n');
-                // document.write('Asr: ' + prayerTimes.asr + '\n');
-                // document.write('Maghrib: ' + prayerTimes.maghrib + '\n');
-                // document.write('Isha: ' + prayerTimes.isha + '\n');
-
-                // document.write('\nCurrent Prayer: ' + prayerName(prayerTimes.currentPrayer()) + '\n');
-                document.getElementById("fajr").innerHTML = prayerTimes.fajr.toLocaleTimeString().slice(0, -3);
-                document.getElementById("sunrise").innerHTML = prayerTimes.sunrise.toLocaleTimeString().slice(0, -3);
-                document.getElementById("zuhr").innerHTML = prayerTimes.dhuhr.toLocaleTimeString().slice(0, -3);
-                document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
-                document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
-                document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
-                document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer());
-                console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
+            // document.write('\nCurrent Prayer: ' + prayerName(prayerTimes.currentPrayer()) + '\n');
+            document.getElementById("fajr").innerHTML = prayerTimes.fajr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("sunrise").innerHTML = prayerTimes.sunrise.toLocaleTimeString().slice(0, -3);
+            document.getElementById("zuhr").innerHTML = prayerTimes.dhuhr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
+            document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
+            document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer());
+            } else {
+            console.error("Geolocation is not supported by this browser.");
             }
+        }
+
+
+        function handleError(error) {
+            let errorStr;
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    errorStr = 'User denied the request for Geolocation.';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorStr = 'Location information is unavailable.';
+                    break;
+                case error.TIMEOUT:
+                    errorStr = 'The request to get user location timed out.';
+                    break;
+                case error.UNKNOWN_ERROR:
+                    errorStr = 'An unknown error occurred.';
+                    break;
+                default:
+                    errorStr = 'An unknown error occurred.';
+            }
+            console.error('Error occurred: ' + errorStr);
+        }
+
+        function showPosition(position) {
+
+            var latitude = 51
+            var longitude = 0.3
+            var date = new Date();
+            var coordinates = new adhan.Coordinates( position.coords.latitude, position.coords.longitude);
+            var params = adhan.CalculationMethod.NorthAmerica();
+            params.madhab = adhan.Madhab.Hanafi;
+            params.adjustments.sunrise = -1
+            params.adjustments.dhuhr = 4
+            params.adjustments.asr = 1
+            params.adjustments.isha = -18
+            var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
+
+            // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
+            // document.write('Fajr: ' + prayerTimes.fajr + '\n');
+            // document.write('Sunrise: ' + prayerTimes.sunrise + '\n');
+            // document.write('Dhuhr: ' + prayerTimes.dhuhr + '\n');
+            // document.write('Asr: ' + prayerTimes.asr + '\n');
+            // document.write('Maghrib: ' + prayerTimes.maghrib + '\n');
+            // document.write('Isha: ' + prayerTimes.isha + '\n');
+
+            // document.write('\nCurrent Prayer: ' + prayerName(prayerTimes.currentPrayer()) + '\n');
+            document.getElementById("fajr").innerHTML = prayerTimes.fajr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("sunrise").innerHTML = prayerTimes.sunrise.toLocaleTimeString().slice(0, -3);
+            document.getElementById("zuhr").innerHTML = prayerTimes.dhuhr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
+            document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
+            document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
+            document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer());
+            console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
+        }
     </script>
 </body>
 
