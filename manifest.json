@@ -1,0 +1,15 @@
+{
+  "background_color": "#b9ebf5",
+  "display": "standalone",
+  "name": "Salaam",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Salaam",
+  "start_url": "/",
+  "theme_color": "#b9ebf5",
+  "categories": [],
+  "screenshots": [],
+  "icons": [],
+  "shortcuts": [],
+  "description": "Location-based prayer timings."
+}
