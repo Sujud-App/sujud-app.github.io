@@ -5,6 +5,7 @@
 
 body {
   background-image: url(./bg.svg);
+  background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--txt-color);
   margin: 0 auto;
