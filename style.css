@@ -1,10 +1,10 @@
 :root {
-  --bg-color: rgb(185, 235, 245);
+  --bg-color: #b9ebf5;
   --txt-color: rgb(23, 56, 63);
 }
 
 body {
-  background-color: var(--bg-color);
+  background-image: url(./bg.svg);
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--txt-color);
   margin: 0 auto;
