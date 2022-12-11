@@ -5,16 +5,31 @@
     <script src="adhan.umd.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E"></script>
     <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <meta name="description" content="Salah timings based on your location.">
     <title>Salaam: Location-based prayer timings.</title>
-    
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Salaam">
+    <meta name="apple-mobile-web-app-title" content="Salaam">
+    <meta name="theme-color" content="#b9ebf5">
+    <meta name="msapplication-navbutton-color" content="#b9ebf5">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" sizes="512x512" href="logo.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="logo.png">
 </head>
 
 <body onload="getCoordintes()">
-    <svg class="sun" width="560" height="560" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="nofill" aria-hidden="true">
+    <svg class="sun" width="560" height="560" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg"
+        class="nofill" aria-hidden="true">
         <circle opacity="0.2" cx="280" cy="280" r="280" fill="white"></circle>
         <ellipse opacity="0.4" cx="280" cy="280" rx="229.091" ry="229.091" fill="white"></ellipse>
         <ellipse cx="280" cy="280" rx="178.182" ry="178.182" fill="white"></ellipse>
@@ -74,80 +89,57 @@
 
     </script></pre>
     <script>
-function getCoordintes() {
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-    };
-  
-    function success(pos) {
-        var crd = pos.coords;
-        var lat = crd.latitude.toString();
-        var lng = crd.longitude.toString();
-        var coordinates = [lat, lng];
-        console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-        getCity(coordinates);
-        var date = new Date();
-        var coordinates = new adhan.Coordinates(lat, lng);
-        var params = adhan.CalculationMethod.NorthAmerica();
-        params.madhab = adhan.Madhab.Hanafi;
-        params.adjustments.sunrise = -1
-        params.adjustments.dhuhr = 4
-        params.adjustments.asr = 1
-        params.adjustments.isha = -18
-        var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
+        function getCoordintes() {
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
 
-        // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
-        // document.write('Fajr: ' + prayerTimes.fajr + '\n');
-        // document.write('Sunrise: ' + prayerTimes.sunrise + '\n');
-        // document.write('Dhuhr: ' + prayerTimes.dhuhr + '\n');
-        // document.write('Asr: ' + prayerTimes.asr + '\n');
-        // document.write('Maghrib: ' + prayerTimes.maghrib + '\n');
-        // document.write('Isha: ' + prayerTimes.isha + '\n');
+            function success(pos) {
+                var crd = pos.coords;
+                var lat = crd.latitude.toString();
+                var lng = crd.longitude.toString();
+                var coordinates = [lat, lng];
+                console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+                var date = new Date();
+                var coordinates = new adhan.Coordinates(lat, lng);
+                var params = adhan.CalculationMethod.NorthAmerica();
+                params.madhab = adhan.Madhab.Hanafi;
+                params.adjustments.sunrise = -1
+                params.adjustments.dhuhr = 4
+                params.adjustments.asr = 1
+                params.adjustments.isha = -18
+                var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
 
-        // document.write('\nCurrent Prayer: ' + prayerName(prayerTimes.currentPrayer()) + '\n');
-        document.getElementById("fajr").innerHTML = prayerTimes.fajr.toLocaleTimeString().slice(0, -3);
-        document.getElementById("sunrise").innerHTML = prayerTimes.sunrise.toLocaleTimeString().slice(0, -3);
-        document.getElementById("zuhr").innerHTML = prayerTimes.dhuhr.toLocaleTimeString().slice(0, -3);
-        document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
-        document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
-        document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
-        document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer())
-        return;
-  
-    }
-  
-    function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-  
-    navigator.geolocation.getCurrentPosition(success, error, options);
-}
-  
-// Step 2: Get city name
-function getCity(coordinates) {
-    var xhr = new XMLHttpRequest();
-    var lat = coordinates[0];
-    var lng = coordinates[1];
-  
-    // Paste your LocationIQ token below.
-    xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=AIzaSyCXu6gdQFre1_BCc7rXgtlp9QyoaCBLY6E&lat=" + lat + "&lon=" + lng + "&format=json", true);
-    xhr.send();
-    xhr.onreadystatechange = processRequest;
-    xhr.addEventListener("readystatechange", processRequest, false);
-  
-    function processRequest(e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-            var city = response.address.city;
-            console.log(city);
-            return;
+                // document.write('Prayer times for ' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '\n');
+                // document.write('Fajr: ' + prayerTimes.fajr + '\n');
+                // document.write('Sunrise: ' + prayerTimes.sunrise + '\n');
+                // document.write('Dhuhr: ' + prayerTimes.dhuhr + '\n');
+                // document.write('Asr: ' + prayerTimes.asr + '\n');
+                // document.write('Maghrib: ' + prayerTimes.maghrib + '\n');
+                // document.write('Isha: ' + prayerTimes.isha + '\n');
+
+                // document.write('\nCurrent Prayer: ' + prayerName(prayerTimes.currentPrayer()) + '\n');
+                document.getElementById("fajr").innerHTML = prayerTimes.fajr.toLocaleTimeString().slice(0, -3);
+                document.getElementById("sunrise").innerHTML = prayerTimes.sunrise.toLocaleTimeString().slice(0, -3);
+                document.getElementById("zuhr").innerHTML = prayerTimes.dhuhr.toLocaleTimeString().slice(0, -3);
+                document.getElementById("asr").innerHTML = prayerTimes.asr.toLocaleTimeString().slice(0, -3);
+                document.getElementById("maghrib").innerHTML = prayerTimes.maghrib.toLocaleTimeString().slice(0, -3);
+                document.getElementById("isha").innerHTML = prayerTimes.isha.toLocaleTimeString().slice(0, -3);
+                document.getElementById("current").innerHTML = prayerName(prayerTimes.currentPrayer())
+                return;
+
+            }
+
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
         }
-    }
-}
-  
-getCoordintes();
+
+        getCoordintes();
     </script>
 </body>
 
