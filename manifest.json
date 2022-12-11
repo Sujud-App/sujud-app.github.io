@@ -9,7 +9,12 @@
   "theme_color": "#b9ebf5",
   "categories": [],
   "screenshots": [],
-  "icons": "./logo.png",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512"
+    }
+  ],
   "shortcuts": [],
   "description": "Location-based prayer timings."
 }
