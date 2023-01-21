@@ -273,7 +273,7 @@ html {
 
 body {
     height: 100%;
-    background:radial-gradient(120vh at 25% -20px, #5a1ae533, #5a1ae533, #0000), radial-gradient(150vh at 70% 80%, #1a50e533, #0000), #121316
+    background:radial-gradient(120vh at 25% -20px, #0c9fc4, #24c5e1c2, rgba(5, 109, 255, 0.525)), radial-gradient(150vh at 70% 80%, #1a50e533, #0000), #121316
 }
 
 *, :before, :after, ::backdrop {
@@ -284,43 +284,12 @@ body {
     --tw-rotate: 0;
     --tw-skew-x: 0;
     --tw-skew-y: 0;
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    --tw-pan-x:;
-    --tw-pan-y:;
-    --tw-pinch-zoom:;
-    --tw-scroll-snap-strictness: proximity;
-    --tw-ordinal:;
-    --tw-slashed-zero:;
-    --tw-numeric-figure:;
-    --tw-numeric-spacing:;
-    --tw-numeric-fraction:;
-    --tw-ring-inset:;
-    --tw-ring-offset-width: 0px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #3b82f680;
     --tw-ring-offset-shadow: 0 0 #0000;
     --tw-ring-shadow: 0 0 #0000;
     --tw-shadow: 0 0 #0000;
     --tw-shadow-colored: 0 0 #0000;
-    --tw-blur:;
-    --tw-brightness:;
-    --tw-contrast:;
-    --tw-grayscale:;
-    --tw-hue-rotate:;
-    --tw-invert:;
-    --tw-saturate:;
-    --tw-sepia:;
-    --tw-drop-shadow:;
-    --tw-backdrop-blur:;
-    --tw-backdrop-brightness:;
-    --tw-backdrop-contrast:;
-    --tw-backdrop-grayscale:;
-    --tw-backdrop-hue-rotate:;
-    --tw-backdrop-invert:;
-    --tw-backdrop-opacity:;
-    --tw-backdrop-saturate:;
-    --tw-backdrop-sepia:
 }
 
 .btn-fill {
