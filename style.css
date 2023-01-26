@@ -30,16 +30,13 @@ body {
 }
 
 .prayer {
-
-  background-color: rgb(23, 56, 63);
-  border-radius: 20px;
   width: 100%;
   margin-top: 10px;
   text-align: center;
   color: var(--bg-color);
   -webkit-backdrop-filter: blur(40px);
   align-items: center;
-  background-color: rgba(31, 32, 35, 0.5);
+  background-color: rgba(31, 32, 35, 0.3);
   border-bottom-color: rgb(229, 231, 235);
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
