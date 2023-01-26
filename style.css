@@ -26,13 +26,13 @@ body {
 }
 
 .prayer {
-
+color: #b9ebf5;
   -webkit-backdrop-filter: blur(40px);
   align-items: center;
   background-color: rgba(31, 32, 35, 0.5);
   border-bottom-color: rgb(229, 231, 235);
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   border-bottom-style: solid;
   border-bottom-width: 0px;
   border-image-outset: 0;
@@ -47,12 +47,14 @@ body {
   border-right-style: solid;
   border-right-width: 0px;
   border-top-color: rgb(229, 231, 235);
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   border-top-style: solid;
   border-top-width: 0px;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  color: #b9ebf5;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-grow: 1;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-feature-settings: normal;
   height: 64px;
@@ -60,13 +62,13 @@ body {
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
-  max-width: 650px;
+  max-width: 576px;
   padding-bottom: 16px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 16px;
   tab-size: 4;
-  width: 650px;
+  width: 576px;
 }
 
 .child {
