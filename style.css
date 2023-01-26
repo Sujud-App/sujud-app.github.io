@@ -2,13 +2,6 @@
   --bg-color: #b9ebf5;
   --txt-color: rgb(23, 56, 63);
 }
-html{
-  background: url(bg.svg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -23,6 +16,7 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   z-index: 100;
+  margin-top: 50px;
 }
 
 .title {
@@ -42,18 +36,46 @@ body {
   margin-top: 10px;
   text-align: center;
   color: var(--bg-color);
+  -webkit-backdrop-filter: blur(40px);
+  align-items: center;
+  background-color: rgba(31, 32, 35, 0.5);
+  border-bottom-color: rgb(229, 231, 235);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(229, 231, 235);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgb(229, 231, 235);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgb(229, 231, 235);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-style: solid;
+  border-top-width: 0px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .child {
   vertical-align: middle;
   float: left;
   padding-left: 7%;
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
 
 .child2 {
   vertical-align: middle;
   float: right;
-  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
   padding-right: 7%;
 }
 
