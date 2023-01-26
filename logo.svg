@@ -26,9 +26,6 @@
 <clipPath id="ArtboardFrame">
 <rect height="1024" width="1024" x="0" y="0"/>
 </clipPath>
-<g clip-path="url(#ArtboardFrame)" id="Layer-1" vectornator:layerName="Layer 1">
-<path d="M2.84217e-14-4.9738e-14L1024.46-4.9738e-14L1024.46 1024L2.84217e-14 1024L2.84217e-14-4.9738e-14Z" fill="#020344" fill-rule="nonzero" opacity="1" stroke="none"/>
-</g>
 <g id="Layer-2" vectornator:layerName="Layer 2">
 <path d="M183.171 625.394L422.493 625.394C451.963 625.394 475.853 646.073 475.853 671.581L475.853 671.581C475.853 697.09 451.963 717.768 422.493 717.768L183.171 717.768C153.702 717.768 129.812 697.09 129.812 671.581L129.812 671.581C129.812 646.073 153.702 625.394 183.171 625.394Z" fill="url(#LinearGradient)" fill-rule="nonzero" filter="url(#Filter)" stroke="none" vectornator:blendMode="lighten" vectornator:shadowAngle="1.5708" vectornator:shadowColor="#00edf0" vectornator:shadowOffset="0" vectornator:shadowOpacity="0.43" vectornator:shadowRadius="100"/>
 <path d="M426.549 349.807L476.113 656.745C480.755 685.495 462.452 712.278 435.231 716.568L435.231 716.568C408.011 720.858 382.181 701.029 377.538 672.279L327.974 365.342C323.332 336.592 341.635 309.808 368.855 305.518L368.855 305.518C396.076 301.229 421.906 321.058 426.549 349.807Z" fill="#11d2f4" fill-rule="nonzero" filter="url(#Filter_2)" stroke="none" vectornator:blendMode="lighten" vectornator:shadowAngle="1.5708" vectornator:shadowColor="#00edf0" vectornator:shadowOffset="0" vectornator:shadowOpacity="0.43" vectornator:shadowRadius="100"/>
